@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 
+
+
 import { AppComponent  } from './app.component';
 import { LoginModule } from './login/login.module';
 import { LoginComponent  } from './login/login.component'; 
