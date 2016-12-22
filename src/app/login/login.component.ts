@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule }    from '@angular/forms';
 import { Login  }      from "../login"; 
 
 @Component({
@@ -8,7 +7,7 @@ import { Login  }      from "../login";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  login :Login; 
+  login = new Login('edney','2'); 
   constructor() { 
      
 
