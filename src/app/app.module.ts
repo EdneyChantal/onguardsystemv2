@@ -2,14 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
-
+import { AppRoutingModule }  from './app-routing.module';
 
 
 import { AppComponent  } from './app.component';
 import { LoginModule } from './login/login.module';
-import { LoginComponent  } from './login/login.component'; 
+import { MenuModule } from './menu/menu.module';
+ 
 
 
 // Must export the config
@@ -29,10 +29,7 @@ export const firebaseConfig = {
     FormsModule,
     HttpModule,
     LoginModule,
-    RouterModule.forRoot([{
-      path: '',
-    	component: LoginComponent
-    }]),
+    AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [],
