@@ -27,6 +27,7 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     FormsModule,
+    MenuModule,
     HttpModule,
     LoginModule,
     AppRoutingModule,
