@@ -4,8 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent }    from './menu.component';
 import {HomeComponent}      from './home.component';
 import {AuthGuard}          from '../auth-guard.service';
-import {AuthService}          from '../auth.service';
-
 
 
 const menuRoutes: Routes = [
@@ -31,6 +29,6 @@ const menuRoutes: Routes = [
   exports: [
     RouterModule
   ],
-  providers: [AuthGuard,AuthService]
+  providers: [AuthGuard]
 })
 export class MenuRoutingModule {}

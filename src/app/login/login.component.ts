@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Login  }      from "../login";
 import {AuthService}              from '../auth.service'; 
 import {Router}   from '@angular/router';
+import {NgForm,NgModel} from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
@@ -9,12 +11,13 @@ import {Router}   from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  login = new Login('edney','2'); 
+  login :Login;
   constructor(private authservice:AuthService,private router:Router) { 
   }
   mLogin(){
-      this.authservice.isLoggedIn = true;
-      this.router.navigate(['/menu']);
+     this.authservice.login(this.login.name,this.login.password).then( (a) => {this.router.navigate(['/menu']);}).catch((err)=>console.log(err));
+
+
 
   }
   ngOnInit() {
