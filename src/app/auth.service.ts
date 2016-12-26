@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { AngularFire} from 'angularfire2';
+import { AngularFire,} from 'angularfire2';
 import { Promise    } from 'firebase';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
