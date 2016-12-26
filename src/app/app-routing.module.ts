@@ -1,14 +1,14 @@
 import {NgModule }             from '@angular/core';
 import {RouterModule, Routes } from '@angular/router';
-import {LoginComponent       } from './login/login.component'
-
+import {LoginComponent       } from './login/login.component';
 
 const appRoutes: Routes = [
-    { path: '',
+    { path: 'login',
       component: LoginComponent
     },
     { path: 'menu',
-      loadChildren:'app/menu/menu.module#MenuModule'}
+      loadChildren:'app/menu/menu.module#MenuModule',
+     }
     ];
 
 @NgModule({
@@ -20,8 +20,7 @@ const appRoutes: Routes = [
   exports: [
     RouterModule
   ],
-  providers: [
-  ]
+  providers: []
 })
 
 
