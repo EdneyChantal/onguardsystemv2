@@ -16,6 +16,9 @@
 				<button class="btn rounded-btn" [disabled]="flogin.form.invalid" type="submit" (click)="mLogin()"> Log in </button>				
 				&nbsp;
 				<a  class="btn rounded-btn" routerLink="/signup">Register</a>
+				<br/>
+				<br/>
+				<div class="alert alert-danger" *ngIf="authservice.lastErr != null">{{authservice.lastErr}}</div>
 				
 			</form>
 		</div>	
