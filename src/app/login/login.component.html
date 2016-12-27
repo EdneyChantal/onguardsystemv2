@@ -13,9 +13,10 @@
 						<input type="password" [(ngModel)]="login.password" name="password"  class="form-control input-underline input-lg" placeholder="Password">
 					</div>
 				</div>
-				<a class="btn rounded-btn"  type="submit" (click)="mLogin()"> Log in </a>				
+				<button class="btn rounded-btn" [disabled]="flogin.form.invalid" type="submit" (click)="mLogin()"> Log in </button>				
 				&nbsp;
 				<a  class="btn rounded-btn" routerLink="/signup">Register</a>
+				
 			</form>
 		</div>	
 	</div>

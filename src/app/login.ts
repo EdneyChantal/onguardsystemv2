@@ -1,4 +1,4 @@
 export class Login {
-  constructor( public name: string,public password:string) {
+  constructor( public name: string,public password:string,public logerros:string ) {
   }
 }
