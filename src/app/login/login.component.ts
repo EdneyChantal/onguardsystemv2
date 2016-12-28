@@ -15,7 +15,9 @@ export class LoginComponent implements OnInit {
   constructor(private authservice:AuthService,private router:Router) { 
   }
   mLogin(){
-     this.authservice.login(this.login.name,this.login.password).then( (a) => {this.router.navigate(['/menu']);});
+     this.authservice.login(this.login.name,this.login.password).then(a => {console.log(a);
+                                                                            this.router.navigate(['/menu']);
+                                                                          }).catch(err=>err);
 
   }
   ngOnInit() {
