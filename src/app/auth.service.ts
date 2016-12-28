@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFire,FirebaseAuthState,FirebaseObjectObservable} from 'angularfire2';
-import { Promise    } from 'firebase';
+import { Promise} from 'firebase';
+import { User }       from './model/user'
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/switchMap';
+import {Observable} from 'rxjs';
 
 
 
@@ -9,23 +12,50 @@ import 'rxjs/add/operator/toPromise';
 export class AuthService {
   isLoggedIn: boolean = false;
   lastErr: String;
-  user : Object;
-  authn 
+  user : User;
+
   // store the URL so we can redirect after logging in
   redirectUrl: string;
 
   constructor(private af:AngularFire) {
     
   }
-  getUser(username:string): Promise<Object>  {
-    return  this.af.database.object('Users/'+username).toPromise().then(obj=>obj as Object).catch(err => this.lastErr = err.message);       
+  getUser(username:string): FirebaseObjectObservable<User>  {
+    var fuser: FirebaseObjectObservable<User>;
+    fuser =  this.af.database.object('Users/'+username);
+    return fuser;
+    
   }
 
   login(username:string , passw: string ): Promise<any> {
-    this.getUser(username).then(obj=>console.log(obj));
     this.lastErr = null;
-    return  this.af.auth.login({email:username,password:passw}).then(auth => {
-       this.isLoggedIn = true; }).catch(err =>this.lastErr = err.message);
+    return this.getUser(username).toPromise<User>().then(user => console.log(user));
+   // this.af.auth.login()
+
+//    return this.getUser(username).toPromise().then(u =>{
+  //     console.log(u);
+  //  }).catch(err => {this.lastErr=err.message;
+    //     return Promise.reject(err);
+    //  });
+
+
+    /*return this.getUser(username).subscribe(user=>{
+       if (user.firstName) {
+         this.af.auth.login({email:user.email,password:passw}).then(auth=>{
+           this.isLoggedIn = true;
+           this.user = user;
+           return Promise.resolve('ok');
+         }).catch(err =>{
+           this.lastErr = err.message;
+           return Promise.reject(err);
+          })           
+       } else {
+         this.lastErr = "Login não cadastrado";
+         return Promise.reject('error');
+       }       
+    });*/
+    
+    
   }
   
   logout(): void {
