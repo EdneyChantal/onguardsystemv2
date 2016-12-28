@@ -20,30 +20,59 @@ export class AuthService {
   constructor(private af:AngularFire) {
     
   }
-  getUser(username:string): FirebaseObjectObservable<User>  {
+  getUser(username:string):FirebaseObjectObservable<User>  {
     var fuser: FirebaseObjectObservable<User>;
     fuser =  this.af.database.object('Users/'+username);
     return fuser;
     
   }
-
+  verLoginBase(puser:User,passw:string ):Promise<User> {
+     debugger;
+     if (puser.firstName) {
+        return  this.af.auth.login({email:puser.email,password:passw}).then(a=>{
+               this.user = puser;  
+               this.isLoggedIn = true;
+               return puser; }).catch(err=>{
+                this.lastErr=err.message;
+                return Promise.reject(err);
+              });
+      } else {
+         this.lastErr="Login não encontrado";
+         return Promise.reject(new Error('Login não encontrado'));
+      }
+  }
   login(username:string , passw: string ): Promise<any> {
     this.lastErr = null;
-    return this.getUser(username).forEach(user=>{
+    let vus = new User('Edney','Chantal',99,'','edney.chantal@gmail.com','','',{});
+
+    /*return this.verLoginBase(vus,'@senha123').then(us=>{console.log(us);
+      return 'ok';  
+    }).
+      catch(err=>{console.log(err);
+        return Promise.reject(err);
+     });*/
+    
+    
+    return this.getUser(username).forEach(us=>us).then(vus=>vus).catch(err=>Promise.reject(err));
+    
+    /*return this.getUser(username).forEach(user=>{
        if (user.firstName) {
-       return this.af.auth.login({email:user.email,password:passw}).then(a=>{
+          this.af.auth.login({email:user.email,password:passw}).then(a=>{
           this.user = user;  
           this.isLoggedIn = true;
-          return Promise.resolve('ok');
-       }).catch(err=>{
+          Promise.resolve('ok');
+               }).catch(err=>{
            this.lastErr=err.message;
            return Promise.reject(err);
-       });   
+          });   
        } else {
          this.lastErr="Login não encontrado";
          return Promise.reject(new Error('Login não encontrado'));
        }
-    }).then(a=>Promise.resolve(a));
+    });*/
+   //return this.getUser(username).switchMap(user=>user).
+
+
 
 
     //})
