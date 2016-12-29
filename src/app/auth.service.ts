@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFire,FirebaseAuthState,FirebaseObjectObservable} from 'angularfire2';
 import { Promise} from 'firebase';
 import { User }       from './model/user'
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/switchMap';
 import {Observable} from 'rxjs/observable';
 
 

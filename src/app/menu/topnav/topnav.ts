@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService} from '../../auth.service';
 
 @Component({
     selector: 'top-nav',
@@ -6,6 +7,12 @@ import { Component } from '@angular/core';
 })
 
 export class TopNavComponent {
+	constructor(private authservice:AuthService) {
+
+	}
+
+
+
 	changeTheme(color: string): void {
 		/*var link: any = $('<link>');
 		link
