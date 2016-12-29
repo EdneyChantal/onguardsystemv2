@@ -4,14 +4,14 @@ import {AuthService}              from '../auth.service';
 import {Router}   from '@angular/router';
 import {NgForm,NgModel} from '@angular/forms';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'] ,
 })
 export class LoginComponent implements OnInit {
   login :Login;
+  canDisplay:boolean;
   constructor(private authservice:AuthService,private router:Router) { 
   }
   mLogin(){
@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit() {
     this.login = new Login('','','');
+    this.canDisplay=true;
   }
 
 }
