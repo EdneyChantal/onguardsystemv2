@@ -3,6 +3,7 @@ import { AuthService} from '../../auth.service';
 import {Router}   from '@angular/router';
 
 @Component({
+	
     selector: 'top-nav',
     templateUrl: './topnav.html',
 })
