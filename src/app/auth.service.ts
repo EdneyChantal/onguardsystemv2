@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFire,FirebaseAuthState,FirebaseObjectObservable} from 'angularfire2';
+import { AngularFire,FirebaseAuthState,FirebaseObjectObservable,AngularFireAuth} from 'angularfire2';
 import { Promise} from 'firebase';
 import { User }       from './model/user'
 import {Observable} from 'rxjs/observable';
@@ -16,13 +16,28 @@ export class AuthService {
   redirectUrl: string;
 
   constructor(private af:AngularFire) {
-    
+     /*this.af.auth.subscribe(auth =>{
+        this.getUserbyUid(auth.uid).subscribe({next:login=>{
+           this.getUser(login).subscribe({next:user=>{
+                console.log(user);
+                if (user) {
+                   this.user = user;
+                   this.isLoggedIn = true;
+                }
+           },
+          error:err=>console.log(err) 
+          });//getUser
+        },error: err=>console.log(err)});//getUserbyUid
+
+    });*/
+
+  }
+  private getUserbyUid(puid:string):FirebaseObjectObservable<string>{
+     return  this.af.database.object(`UserLogin/$(puid)`);
   }
   private getUser(username:string):FirebaseObjectObservable<User>  {
-    var fuser: FirebaseObjectObservable<User>;
-    fuser =  this.af.database.object('Users/'+username);
-    return fuser;
-    
+    console.log(username);
+    return this.af.database.object('Users/'+username);
   }
   private verLoginBase(puser:User,passw:string ):Promise<User> {
       if (puser.firstName) {
