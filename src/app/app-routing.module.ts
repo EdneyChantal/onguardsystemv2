@@ -8,7 +8,10 @@ const appRoutes: Routes = [
     },
     { path: 'menu',
       loadChildren:'app/menu/menu.module#MenuModule',
-     }
+     },
+     {path:'',
+      redirectTo:'/menu',
+      pathMatch: 'full' }
     ];
 
 @NgModule({

@@ -12,7 +12,6 @@ export class AuthService {
   isLoggedIn: boolean = false;
   lastErr: String;
   user : User;
-
   // store the URL so we can redirect after logging in
   redirectUrl: string;
 
@@ -23,17 +22,17 @@ export class AuthService {
                 if (user) {
                    this.user = user;
                    this.isLoggedIn = true;
-                   router.navigate(['/menu']);
+                     router.navigate(['/menu']);
                 }
            }});
         });
     });
-
+    
   }
-  private getUserbyUid(puid:string,promise:Function){
+  private getUserbyUid(puid:string,promise:Function,ferr?:Function){
      let pr : FirebaseObjectObservable<Object>;
      pr = this.af.database.object('UserLogin');
-     pr.forEach(obj=>promise(obj[puid]));
+     pr.subscribe({next:obj=>promise(obj[puid]),error:err=>ferr(err)});
   }
   private getUser(username:string):FirebaseObjectObservable<User>  {
     return this.af.database.object('Users/'+username);
