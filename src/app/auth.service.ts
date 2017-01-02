@@ -3,6 +3,7 @@ import { AngularFire,FirebaseAuthState,FirebaseObjectObservable,AngularFireAuth}
 import { Promise} from 'firebase';
 import { User }       from './model/user'
 import {Observable} from 'rxjs/observable';
+import {Router} from '@angular/router';
 
 
 
@@ -15,30 +16,26 @@ export class AuthService {
   // store the URL so we can redirect after logging in
   redirectUrl: string;
 
-  constructor(private af:AngularFire) {
+  constructor(private af:AngularFire,private router:Router) {
      this.af.auth.subscribe(auth =>{
-        this.getUserbyUid(auth.uid).subscribe({next:login=>{
-           console.log(login);
+        this.getUserbyUid(auth.uid,login => {
            this.getUser(login).subscribe({next:user=>{
-                console.log(user);
                 if (user) {
                    this.user = user;
                    this.isLoggedIn = true;
+                   router.navigate(['/menu']);
                 }
-           },
-          error:err=>console.log(err) 
-          });//getUser
-        },error: err=>console.log(err)});//getUserbyUid
-
+           }});
+        });
     });
 
   }
-  private getUserbyUid(puid:string):FirebaseObjectObservable<string>{
-    console.log(puid);
-     return  this.af.database.object(`UserLogin/$(puid)`);
+  private getUserbyUid(puid:string,promise:Function){
+     let pr : FirebaseObjectObservable<Object>;
+     pr = this.af.database.object('UserLogin');
+     pr.forEach(obj=>promise(obj[puid]));
   }
   private getUser(username:string):FirebaseObjectObservable<User>  {
-    
     return this.af.database.object('Users/'+username);
   }
   private verLoginBase(puser:User,passw:string ):Promise<User> {
