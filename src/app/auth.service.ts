@@ -16,8 +16,9 @@ export class AuthService {
   redirectUrl: string;
 
   constructor(private af:AngularFire) {
-     /*this.af.auth.subscribe(auth =>{
+     this.af.auth.subscribe(auth =>{
         this.getUserbyUid(auth.uid).subscribe({next:login=>{
+           console.log(login);
            this.getUser(login).subscribe({next:user=>{
                 console.log(user);
                 if (user) {
@@ -29,14 +30,15 @@ export class AuthService {
           });//getUser
         },error: err=>console.log(err)});//getUserbyUid
 
-    });*/
+    });
 
   }
   private getUserbyUid(puid:string):FirebaseObjectObservable<string>{
+    console.log(puid);
      return  this.af.database.object(`UserLogin/$(puid)`);
   }
   private getUser(username:string):FirebaseObjectObservable<User>  {
-    console.log(username);
+    
     return this.af.database.object('Users/'+username);
   }
   private verLoginBase(puser:User,passw:string ):Promise<User> {
