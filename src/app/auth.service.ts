@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AngularFire,FirebaseAuthState,FirebaseObjectObservable,AngularFireAuth} from 'angularfire2';
+import { AngularFire,FirebaseAuthState,FirebaseObjectObservable,AngularFireAuth,FirebaseListObservable} from 'angularfire2';
 import { Promise} from 'firebase';
 import { User }       from './model/user'
-import {Observable} from 'rxjs/observable';
-import {Router} from '@angular/router';
+import { Company }       from './model/company'
+import { Observable} from 'rxjs/observable';
+import { Router} from '@angular/router';
 
 
 
@@ -12,17 +13,20 @@ export class AuthService {
   isLoggedIn: boolean = false;
   lastErr: String;
   user : User;
+  companys :Company[];
+
   // store the URL so we can redirect after logging in
   redirectUrl: string;
 
   constructor(private af:AngularFire,private router:Router) {
+    
      this.af.auth.subscribe(auth =>{
         this.getUserbyUid(auth.uid,login => {
            this.getUser(login).subscribe({next:user=>{
                 if (user) {
                    this.user = user;
                    this.isLoggedIn = true;
-                     router.navigate(['/menu']);
+                   router.navigate(['/menu']);
                 }
            }});
         });
@@ -36,6 +40,12 @@ export class AuthService {
   }
   private getUser(username:string):FirebaseObjectObservable<User>  {
     return this.af.database.object('Users/'+username);
+  }
+  private getCompanys(puser:User,promise:Function,ferr?:Function) {
+    let pr :FirebaseListObservable<Company>;
+    pr.$ref = this.af.database.list('Companys').$ref;
+    pr.subscribe(companys => console.log(companys));
+
   }
   private verLoginBase(puser:User,passw:string ):Promise<User> {
       if (puser.firstName) {
