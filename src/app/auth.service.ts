@@ -18,17 +18,20 @@ export class AuthService {
   // store the URL so we can redirect after logging in
   redirectUrl: string;
 
+  
+
   constructor(private af:AngularFire,private router:Router) {
-    
-     this.af.auth.subscribe(auth =>{
-        this.getUserbyUid(auth.uid,login => {
-           this.getUser(login).subscribe({next:user=>{
-                if (user) {
-                   this.user = user;
-                   this.isLoggedIn = true;
+     let actionOk:Function  = function(puser:User,pthis:AuthService) {
+           if (puser) {
+                   pthis.user = puser;
+                   pthis.isLoggedIn = true;
                    router.navigate(['/menu']);
                 }
-           }});
+      }
+
+      this.af.auth.subscribe(auth =>{
+        this.getUserbyUid(auth.uid,login => {
+           this.getUser(login).subscribe({next:user=>this.getCompanysUser(user,actionOk)});
         });
     });
     
@@ -41,11 +44,21 @@ export class AuthService {
   private getUser(username:string):FirebaseObjectObservable<User>  {
     return this.af.database.object('Users/'+username);
   }
-  private getCompanys(puser:User,promise:Function,ferr?:Function) {
-    let pr :FirebaseListObservable<Company>;
-    pr.$ref = this.af.database.list('Companys').$ref;
-    pr.subscribe(companys => console.log(companys));
-
+  private getCompanysUser(puser:User,promise:Function,ferr?:Function) {
+    let findCompanys: Function  = function(pcompanys:Object,pcompUser:string[]) {
+        let gCompy:Company[]=[];
+        pcompUser.map(keycomp=>gCompy.push(pcompanys[keycomp]) );
+        return gCompy;
+    }
+    this.af.database.object('Companys').subscribe({next:companys=>{
+         this.companys = findCompanys(companys as Company[],puser.companys as string[]);  
+         console.log(this.companys);
+         promise(puser,this);
+    },error:err=>{
+     if (ferr){
+       ferr(err);
+      }
+    }});
   }
   private verLoginBase(puser:User,passw:string ):Promise<User> {
       if (puser.firstName) {
@@ -78,5 +91,6 @@ export class AuthService {
   
   logout(): void {
     this.isLoggedIn = false;
+    this.af.auth.logout();
   }
 }
