@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable,Inject } from '@angular/core';
 import { AngularFire,FirebaseAuthState,FirebaseObjectObservable,AngularFireAuth,FirebaseListObservable} from 'angularfire2';
 import { Promise} from 'firebase';
 import { User }       from './model/user'
 import { Company }       from './model/company'
 import { Observable} from 'rxjs/observable';
 import { Router} from '@angular/router';
-
+import {AppConfig,APP_CONFIG} from './app-config' 
 
 
 @Injectable()
@@ -14,13 +14,16 @@ export class AuthService {
   lastErr: String;
   user : User;
   companys :Company[];
+  chosenCompany:Company;
+  siglaApp:string;
 
   // store the URL so we can redirect after logging in
   redirectUrl: string;
 
   
 
-  constructor(private af:AngularFire,private router:Router) {
+  constructor(private af:AngularFire,private router:Router, @Inject(APP_CONFIG) config: AppConfig ) {
+    this.siglaApp=config.siglaApp;
      let actionOk:Function  = function(puser:User,pthis:AuthService) {
            if (puser) {
                    pthis.user = puser;
@@ -35,6 +38,9 @@ export class AuthService {
         });
     });
     
+  }
+  chooseCompany(pCompany:Company) {
+    this.chosenCompany = pCompany;
   }
   private getUserbyUid(puid:string,promise:Function,ferr?:Function){
      let pr : FirebaseObjectObservable<Object>;
@@ -51,8 +57,11 @@ export class AuthService {
         return gCompy;
     }
     this.af.database.object('Companys').subscribe({next:companys=>{
+         let a:Company[] = (companys as Company[]);
+         a.map(function(value){
+           console.log(value);
+         })
          this.companys = findCompanys(companys as Company[],puser.companys as string[]);  
-         console.log(this.companys);
          promise(puser,this);
     },error:err=>{
      if (ferr){

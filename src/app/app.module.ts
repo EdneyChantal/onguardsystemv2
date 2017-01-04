@@ -6,15 +6,16 @@ import { AngularFireModule,AuthProviders,AuthMethods } from 'angularfire2';
 import { AppRoutingModule }  from './app-routing.module';
 import { AuthService } from './auth.service';
 
+
 import { AppComponent  } from './app.component';
 import { LoginModule } from './login/login.module';
 import { MenuModule } from './menu/menu.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import {AppConfig,onGuardConfig,APP_CONFIG} from './app-config'
 
 
 // Must export the config
-export const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyCORKDPWChZ4iWsKc9DO83kMe0MLTdUPSk",
          authDomain: "lucrofacil.firebaseapp.com",
          databaseURL: "https://lucrofacil.firebaseio.com",
@@ -25,6 +26,9 @@ const myFirebaseAuthConfig = {
   provider: AuthProviders.Password,
   method: AuthMethods.Password
 }
+
+
+
 
 @NgModule({
   declarations: [
@@ -40,7 +44,7 @@ const myFirebaseAuthConfig = {
     AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig),
     NgbModule.forRoot()
   ],
-  providers: [AuthService],
+  providers: [{provide:APP_CONFIG,useValue:onGuardConfig},AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

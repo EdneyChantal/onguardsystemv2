@@ -62,31 +62,23 @@
                     </ul>
                 <!-- </div> -->
             </li>
-            <li class="dropdown nav-item" dropdown>
-                <!-- <div class="dropdown"> -->
-                    <a href="javascript:;" id="name2" class="nav-link dropdown-toggle" dropdownToggle>
-                        <i class="fa fa-bell"></i> <b class="caret"></b><span class="sr-only">(current)</span>
-                    </a>
-                    <ul class="dropdown-menu alert-dropdown" aria-labelledby="name2">
-                        <li >
-                            <a href="javascript:;" class="dropdown-item">Alert Name <span class="label label-default"> Alert Badge</span></a>
-                        </li>
-                        <li >
-                            <a href="javascript:;" class="dropdown-item">Alert Name <span class="label label-default"> Alert Badge</span></a>
-                        </li>
-                        <li >
-                            <a href="javascript:;" class="dropdown-item">Alert Name <span class="label label-default"> Alert Badge</span></a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li>
-                            <a href="javascript:;" class="dropdown-item">View All</a>
+            <div ngbDropdown class="d-inline-block">
+                    <button  id="dropdownMenu2" class="btn btn-outline-primary" ngbDropdownToggle>
+                       <i class="fa fa-group"></i> <span *ngIf="!authservice.chosenCompany">Escolha uma Empresa</span>
+                                                   <span *ngIf="authservice.chosenCompany">{{authservice.chosenCompany.companyName}}
+                                                       </span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li *ngFor="let company of authservice.companys">
+                            <a href="javascript:;" class="dropdown-item" (click)="authservice.chooseCompany(company)">{{company.companyName}} </a>
                         </li>
                     </ul>
-                <!-- </div> -->
-            </li>
+            </div>
             <div ngbDropdown class="d-inline-block" >
                 
-                <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>{{authservice.user.firstName}}</button>
+                <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>
+                   <i class="fa fa-user"></i> 
+                    {{authservice.user.firstName}}</button>
              
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <li>
