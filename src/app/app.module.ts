@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule,AuthProviders,AuthMethods } from 'angularfire2';
 import { AppRoutingModule }  from './app-routing.module';
-import { AuthService } from './auth.service';
+import { AuthService } from './share/auth.service';
 
-import {PraticaCore}  from  './pratica-core.service'
+import {PraticaCore}  from  './share/pratica-core.service'
 import {AppComponent } from './app.component';
 import {LoginModule} from './login/login.module';
 import {MenuModule} from './menu/menu.module';

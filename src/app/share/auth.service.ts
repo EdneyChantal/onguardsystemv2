@@ -1,12 +1,12 @@
 import { Injectable,Inject } from '@angular/core';
 import { AngularFire,FirebaseAuthState,FirebaseObjectObservable,AngularFireAuth,FirebaseListObservable} from 'angularfire2';
 import { Promise} from 'firebase';
-import {User }       from './model/user'
-import {Company }       from './model/company'
-import {Establishment} from './model/establishment'
+import {User }       from './user'
+import {Company }       from './company'
+import {Establishment} from './establishment'
 import {Observable} from 'rxjs/observable';
 import {Router} from '@angular/router';
-import {AppConfig,APP_CONFIG} from './app-config' 
+import {AppConfig,APP_CONFIG} from '../app-config' 
 import {PraticaCore}  from './pratica-core.service'
 
 @Injectable()

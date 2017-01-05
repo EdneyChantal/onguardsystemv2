@@ -7,7 +7,7 @@ import {
   NavigationExtras,
   CanLoad, Route
 }                           from '@angular/router';
-import { AuthService }      from './auth.service';
+import { AuthService }      from './share/auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {

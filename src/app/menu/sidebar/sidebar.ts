@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ItemSidebarMenu,itensMenu} from '../item.sidebar.menu';
 
 @Component({
 	selector: 'sidebar-cmp',
@@ -8,6 +9,7 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
 	isActive = false;
 	showMenu: string = '';
+	xitensMenu = itensMenu;
 	eventCalled() {
 		this.isActive = !this.isActive;
 	}
