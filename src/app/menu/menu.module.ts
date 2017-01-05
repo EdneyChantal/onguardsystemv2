@@ -6,12 +6,14 @@ import {TopNavComponent} from './topnav/topnav';
 import {SidebarComponent} from './sidebar/sidebar'
 import {HomeComponent} from './home.component'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {LoadingModule} from '../loading/loading.module'
 
 @NgModule({
   imports: [
     CommonModule,
     MenuRoutingModule,
-    NgbModule
+    NgbModule,
+    LoadingModule
   ],
   declarations: [MenuComponent,TopNavComponent,SidebarComponent,HomeComponent]
 })

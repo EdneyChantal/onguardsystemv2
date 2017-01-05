@@ -6,10 +6,10 @@ import { AngularFireModule,AuthProviders,AuthMethods } from 'angularfire2';
 import { AppRoutingModule }  from './app-routing.module';
 import { AuthService } from './auth.service';
 
-
-import { AppComponent  } from './app.component';
-import { LoginModule } from './login/login.module';
-import { MenuModule } from './menu/menu.module';
+import {PraticaCore}  from  './pratica-core.service'
+import {AppComponent } from './app.component';
+import {LoginModule} from './login/login.module';
+import {MenuModule} from './menu/menu.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppConfig,onGuardConfig,APP_CONFIG} from './app-config'
 
@@ -44,7 +44,7 @@ const myFirebaseAuthConfig = {
     AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig),
     NgbModule.forRoot()
   ],
-  providers: [{provide:APP_CONFIG,useValue:onGuardConfig},AuthService],
+  providers: [PraticaCore,{provide:APP_CONFIG,useValue:onGuardConfig},AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

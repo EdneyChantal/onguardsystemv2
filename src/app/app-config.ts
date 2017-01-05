@@ -1,11 +1,13 @@
 import { OpaqueToken } from '@angular/core';
 
 export interface AppConfig {
-  siglaApp: string 
+  siglaApp: string ,
+  refAppRoot:string
 }
 
 export const onGuardConfig: AppConfig = {
-  siglaApp:'CASY'
+  siglaApp:'CASY',
+  refAppRoot:'BaseCarSystem'
 };
 
 export let APP_CONFIG = new OpaqueToken('app.config');

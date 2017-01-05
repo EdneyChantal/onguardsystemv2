@@ -20,7 +20,8 @@
 				<br/>
 				<div class="alert alert-danger" *ngIf="authservice.lastErr != null">{{authservice.lastErr}}</div>
 			</form>
-			<cp-loading [display]="canDisplay"></cp-loading>
+			<cp-loading [display]="authservice.display"></cp-loading>
+			
 		</div>	
 	</div>
 </div>
