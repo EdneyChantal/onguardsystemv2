@@ -46,6 +46,12 @@ export class AuthService {
       }});
     
   }
+  getPathBaseSis():string {
+    if (this.chosenCompany && this.chosenEstablish) {
+        return this.config.refAppRoot + '/' + this.chosenCompany['$key'] + '/' + this.chosenEstablish['$key'];
+    } 
+    return null;    
+  }
   chooseEstablish(pEstablish) {
     this.chosenEstablish = pEstablish;
   }

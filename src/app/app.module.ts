@@ -11,7 +11,8 @@ import {AppComponent } from './app.component';
 import {LoginModule} from './login/login.module';
 import {MenuModule} from './menu/menu.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {AppConfig,onGuardConfig,APP_CONFIG} from './app-config'
+import {AppConfig,onGuardConfig,APP_CONFIG} from './app-config';
+import {ContractModule} from './contract/contract.module';
 
 
 // Must export the config
@@ -40,6 +41,7 @@ const myFirebaseAuthConfig = {
     MenuModule,
     HttpModule,
     LoginModule,
+    ContractModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig),
     NgbModule.forRoot()
