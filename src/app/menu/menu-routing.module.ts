@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent }    from './menu.component';
 import {HomeComponent}      from './home.component';
 import {AuthGuard}          from '../auth-guard.service';
+import {ContractRoutes} from '../contract/contract.routes'
 
 
 const menuRoutes: Routes = [
@@ -14,9 +15,9 @@ const menuRoutes: Routes = [
     children: [
       { path: '',
         component:HomeComponent,
-        canActivateChild:[AuthGuard] }
-       
-    ],
+        canActivateChild:[AuthGuard] },
+        ...ContractRoutes
+       ],
     
     
   }

@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule }    from '@angular/forms';
 import {ContractComponent}  from './contract.component';
-import {ContractRoutingModule}  from './contract-routing.module';
-import {DaoService}   from '../share/dao.service';
+import {ContractDaoService}   from '../dao/contract.dao.service';
+import {ContractFormComponent} from './contract.form.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+
 @NgModule({
   imports: [
     CommonModule,
-    ContractRoutingModule
+      NgbModule,
+      FormsModule,
   ],
-  declarations: [ContractComponent],
-  providers:[DaoService]
+   declarations: [ContractComponent,ContractFormComponent],
+  providers:[ContractDaoService]
 })
 export class ContractModule { }

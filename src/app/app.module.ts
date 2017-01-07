@@ -13,7 +13,7 @@ import {MenuModule} from './menu/menu.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppConfig,onGuardConfig,APP_CONFIG} from './app-config';
 import {ContractModule} from './contract/contract.module';
-
+import {ValorMoedaDirective} from './share/valormoeda.directive';
 
 // Must export the config
 const firebaseConfig = {
@@ -33,7 +33,7 @@ const myFirebaseAuthConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,ValorMoedaDirective
   ],
   imports: [
     BrowserModule,

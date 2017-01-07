@@ -1,0 +1,56 @@
+<div class="card card-block">
+        <form #fcontract="ngForm">
+              <div class="form-group">
+                 <label>  Nome do Contrato </label>
+                 <input class="form-control" [ngModel]="contract.description" (ngModelChange)="teste($event)" name="description" required />
+              </div>
+              <div class="form-group">
+                 <label>Contato nome </label>
+                 <input type="text" class="form-control" [(ngModel)]="contract.namecontact" name="namecontact" required />
+              </div>
+              <div class="form-group">
+                 <label>Contato Email </label>
+                 <input type="email" class="form-control" [(ngModel)]="contract.emailContact" name="emailcontact" required />
+              </div>
+              <div class="form-group">
+                 <label>Vagas Diaria Contratada</label>
+                 <input type="number" class="form-control" [(ngModel)]="contract.qtdvagas" name="qtdvagas" required />
+              </div>
+              <div class="form-group">
+                 <label>Tempo máximo de uma vaga</label>
+                 <input type="text" class="form-control" [(ngModel)]="contract.timemax" name="timemax" required />
+              </div>
+              <div class="form-group">
+                 <label>Valor Cobrado por Vaga</label>
+                 <input type="text" class="form-control" [(ngModel)]="contract.valor" name="valor" required />
+              </div>
+              <div class="form-group">
+                   <label>Data Inicio Vigencia</label> 
+                   <div class="input-group"> 
+                     <input class="form-control" placeholder="dd/mm/yyyy"  name="dtinivigencia" [(ngModel)]="contract.dtinivigencia" ngbDatepicker #d1="ngbDatepicker">
+                     <div class="input-group-addon" (click)="d1.toggle()" >
+                         <img src="assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                     </div>
+                   </div>   
+                   <!--<di-inpdata fielddate="contract.dtinivigencia" mindate="" maxdate="" varmodel="contract" namefield="dtinivigencia"></di-inpdata>-->
+             </div>
+             <div class="form-group">
+                   <label>Data Final Vigencia</label>
+                    <div class="input-group"> 
+                     <input class="form-control" placeholder="dd/mm/yyyy"  name="dtfimvigencia" [(ngModel)]="contract.dtfimvigencia" ngbDatepicker #d2="ngbDatepicker">
+                     <div class="input-group-addon" (click)="d2.toggle()" >
+                         <img src="assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                     </div>
+                   </div>   
+             </div>  
+              
+              <button type="submit" [disabled]="fcontract.form.invalid" class="btn btn-primary" (click)="save()">Gravar</button>
+              <button type="cancel" class="btn btn-danger" (click)="cancel()">Cancelar</button>
+              
+              
+          </form>
+
+</div>
+
+
+

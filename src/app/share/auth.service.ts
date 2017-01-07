@@ -32,14 +32,19 @@ export class AuthService {
                    pthis.user = puser;
                    pthis.isLoggedIn = true;
                    router.navigate(['/menu']);
-                   pthis.display=false;
                 }
+            pthis.display=false;    
       }
       this.display=true
       this.af.auth.subscribe({next:auth =>{
-        this.getUserbyUid(auth.uid,login => {
-           this.getUser(login).subscribe({next:user=>this.getCompanysUser(user,actionOk),error:err=>this.display=false});
-        });
+        if (auth!=null) {
+           this.getUserbyUid(auth.uid,login => {
+              this.getUser(login).subscribe({next:user=>this.getCompanysUser(user,actionOk),
+                                          error:err=>this.display=false});
+           },()=>{this.display=false;});
+        } else {
+          this.display=false;
+        }
         
       },error:err=>{
         this.display=false;
