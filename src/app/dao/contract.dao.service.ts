@@ -25,6 +25,12 @@ export class ContractDaoService extends DaoService  {
      isChosenCompany():Boolean {
        return (this.authservice.getPathBaseSis()!==null);
      }
-
+     insertContract(pc:Contract,promise?:Function,reject?:Function) {
+       let id:string = this.pcore.geraId();
+       let obj:Object={};
+       obj[id]={};
+       obj[id]=pc;
+       this.olist.update(obj).then((a)=>(promise?promise(a):null)).catch((err)=>(reject?reject(err):null));
+     }
 
 }

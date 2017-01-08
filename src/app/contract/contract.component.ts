@@ -1,7 +1,6 @@
 import {Component, OnInit } from '@angular/core';
 import {ContractDaoService}  from '../dao/contract.dao.service'
 import {Contract} from '../model/contract';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ContractFormComponent} from './contract.form.component'
 
 @Component({
@@ -11,18 +10,13 @@ import {ContractFormComponent} from './contract.form.component'
 })
 export class ContractComponent implements OnInit {
   lct:Contract[];
-  constructor(private ctDao:ContractDaoService,private modalService: NgbModal ) { }
+  openForm:boolean =false;
+  constructor(private ctDao:ContractDaoService) { }
 
   ngOnInit() {
       this.ctDao.load(obj=>{
         this.lct=(obj as Contract[]);
       });
   }
-  open(){
-    console.log('fez');
-     const modalRef = this.modalService.open(ContractFormComponent);
-     
-    // modalRef.componentInstance.name = 'World';
 
-  }
 }

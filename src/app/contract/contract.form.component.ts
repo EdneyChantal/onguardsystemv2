@@ -14,7 +14,7 @@ export class ContractFormComponent {
       this.contract.description = 'maria';
      
    }
-   teste(event) {
+   upperCase(event) {
      this.contract.description = (event as String).toUpperCase();
    }
 }
