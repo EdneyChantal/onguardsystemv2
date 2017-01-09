@@ -18,5 +18,14 @@ export class ContractComponent implements OnInit {
         this.lct=(obj as Contract[]);
       });
   }
+  toogleForm() {
+    this.openForm=!this.openForm;
+
+  }
+  save(value){
+    console.log(value);
+    this.toogleForm();
+
+  }
 
 }

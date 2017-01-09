@@ -1,8 +1,8 @@
 <div class="card card-block">
-        <form #fcontract="ngForm">
+           <form  (ngSubmit)="onSubmit()" #fcontract="ngForm">
               <div class="form-group">
                  <label>  Nome do Contrato </label>
-                 <input class="form-control" [ngModel]="contract.description" (ngModelChange)="teste($event)" name="description" required />
+                 <input class="form-control" ([ngModel])="contract.description" name="description" required />
               </div>
               <div class="form-group">
                  <label>Contato nome </label>
@@ -44,8 +44,8 @@
                    </div>   
              </div>  
               
-              <button type="submit" [disabled]="fcontract.form.invalid" class="btn btn-primary" (click)="save()">Gravar</button>
-              <button type="cancel" class="btn btn-danger" (click)="cancel()">Cancelar</button>
+              <button type="submit" [disabled]="fcontract.form.invalid" class="btn btn-primary">Gravar</button>
+              <button type="cancel" class="btn btn-danger" (click)="fcontract.reset;cancel();">Cancelar</button>
               
               
           </form>
