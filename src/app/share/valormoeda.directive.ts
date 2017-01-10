@@ -8,8 +8,7 @@ export class ValorMoedaDirective {
        el.nativeElement.style.backgroundColor = 'yellow';
        console.log('entrei');
     }
-    @HostListener('mouseenter') mouseEnter() {
+    @HostListener('mouseenter') OnMouseEnter() {
        console.log(this);
-
     }
 }

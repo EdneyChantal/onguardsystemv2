@@ -1,5 +1,7 @@
 import {Component,Input,Output,EventEmitter} from '@angular/core';
 import {Contract} from '../model/contract'
+import {PraticaCore}  from '../share/pratica-core.service'
+
 
 @Component({
   selector: 'cp-contract-form',
@@ -14,7 +16,7 @@ export class ContractFormComponent {
 
   
 
-   constructor() {}
+   constructor(private pccore:PraticaCore) {}
    onKey(value){
       this.contract.description = 'maria';
    }

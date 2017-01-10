@@ -1,26 +1,27 @@
-<nav class="navbar navbar-brand bg-inverse navbar-fixed-top topnav">
+<nav class="navbar navbar-brand  bg-inverse navbar-fixed-top topnav">
     <div class="collapse navbar-toggleable-xs clearfix text-center">
         <img src="assets/img/logo-onguardsystem.png" width="50px" class="navbar-brand user-avatar" />
-        <a class="navbar-brand " [routerLink]="['/menu']">Gestão de Estacionamento</a>
+       <!-- <a class="navbar-brand " [routerLink]="['/menu']">Gestão de Estacionamento</a>-->
         
         <cp-loading [display]="authservice.display"></cp-loading>
 
            <div ngbDropdown class="navbar-right pull-xs-right my-but-menu" >
-               <button class="btn btn-primary" id="dropdownMenu1" ngbDropdownToggle>
+               <button class="btn btn-primary" id="dropdownMenu4" ngbDropdownToggle>
                    <i class="fa fa-bars"></i> 
                 </button>
              
             </div>
 
             <div ngbDropdown class="navbar-right pull-xs-right my-but-menu" >
-               <button class="btn btn-primary" id="dropdownMenu1" ngbDropdownToggle>
+               <button class="btn btn-primary" id="dropdownMenu5" ngbDropdownToggle>
                    <i class="fa fa-bars"></i> 
                 </button>
              
             </div>
 
         <ul class="nav navbar-nav top-nav navbar-right pull-xs-right top-right-nav">
-            <div ngbDropdown class="d-inline-block">
+            <div class="form-inline">
+            <li ngbDropdown class="nav-item">
                     <button  id="dropdownMenu3" class="btn btn-outline-primary" ngbDropdownToggle>
                        <i class="fa fa-bank"></i> <span *ngIf="!authservice.chosenEstablish">Escolha um Estabelecimento</span>
                                                    <span *ngIf="authservice.chosenEstablish">{{authservice.chosenEstablish.establishName}}
@@ -31,8 +32,8 @@
                             <a href="javascript:;" class="dropdown-item" (click)="authservice.chooseEstablish(establish)">{{establish.establishName}} </a>
                         </li>
                     </ul>
-            </div>
-            <div ngbDropdown class="d-inline-block">
+            </li>
+            <li ngbDropdown class="nav-item">
                     <button  id="dropdownMenu2" class="btn btn-outline-primary" ngbDropdownToggle>
                        <i class="fa fa-group"></i> <span *ngIf="!authservice.chosenCompany">Escolha uma Empresa</span>
                                                    <span *ngIf="authservice.chosenCompany">{{authservice.chosenCompany.companyName}}
@@ -43,8 +44,8 @@
                             <a href="javascript:;" class="dropdown-item" (click)="authservice.chooseCompany(company)">{{company.companyName}} </a>
                         </li>
                     </ul>
-            </div>
-            <div ngbDropdown class="d-inline-block" >
+            </li>
+            <li ngbDropdown class="nav-item" >
                 
                 <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>
                    <i class="fa fa-user"></i> 
@@ -67,8 +68,8 @@
                         </a>
                     </li>
                 </ul>
-            </div>
-            
+            </li>
+            </div>  
 
         </ul>
     </div>
