@@ -10,15 +10,15 @@ import {PraticaCore}  from '../share/pratica-core.service'
 })
 
 export class ContractFormComponent {
-   @Output() contractchange:EventEmitter<Contract>=new EventEmitter<Contract>();
+   @Output() contractchange:EventEmitter<Object>=new EventEmitter<Object>();
    @Output() contractcancel:EventEmitter<any>=new EventEmitter<any>();
-   contract:Contract=new Contract();
+   contract:Object={};
 
   
 
    constructor(private pccore:PraticaCore) {}
    onKey(value){
-      this.contract.description = 'maria';
+      //this.contract.description = 'maria';
    }
    onSubmit() {
       this.contractchange.emit(this.contract);
@@ -28,6 +28,6 @@ export class ContractFormComponent {
    }
    
    upperCase(event) {
-     this.contract.description = (event as String).toUpperCase();
+    // this.contract.description = (event as String).toUpperCase();
    }
 }

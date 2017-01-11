@@ -1,29 +1,26 @@
 import { Injectable} from '@angular/core';
-import {CurrencyPipe} from '@angular/common';
 
 
 @Injectable()
 export class PraticaCore {
-    constructor(private curpp:CurrencyPipe) {}
+    constructor() {}
 
 
-  textToMoeda(data:string ):string {
-      let sinal = 1;    
-      if (data.substr(0,1) === '-') {
-           sinal = -1;    
-      }
-      if (data.substr(0,1) === '(') {
-           sinal = -1;    
-      }
-	  data  = data.replace(/[^0-9]+/g,"");
-      if (parseInt(data) === 0){
-           return '0';
-       } else if ((data === "") && (sinal < 0)) {
-           return "-";
-       }  else {
-           return this.curpp.transform((parseInt(data)*sinal)/100); 
-       }
-   }
+    moedaToNumber(str:string )
+    {
+        return parseInt( str.replace(/[\D]+/g,'') );
+        }
+
+   textToMoeda( int:number):string 
+    {
+        var tmp = int+'';
+        tmp = tmp.replace(/([0-9]{2})$/g, ",$1");
+        if( tmp.length > 6 )
+                tmp = tmp.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+
+        return tmp;
+    }
+    
  
 
    oForEach(pobj:Object,callback:Function){
