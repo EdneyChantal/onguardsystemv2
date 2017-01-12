@@ -5,16 +5,45 @@ import { Injectable} from '@angular/core';
 export class PraticaCore {
     constructor() {}
 
+  
+    
+
 
     moedaToNumber(str:string )
     {
         return parseInt( str.replace(/[\D]+/g,'') );
+    }
+    textToTime(data:string ):string {
+        let retorno:string='';
+        if (!data){
+            return '';
         }
 
-   textToMoeda( data:string):string{
+		data  = data.replace(/[^0-9]+/g,"");
+        if (data.length > 0 ) {
+           data  = parseInt(data).toString();
+        }   
+        if (data.length == 1 ) {
+           retorno =   '00:0' + data;
+        }
+        if (data.length == 2 ) {
+           retorno =  '00:' + data  ;
+        }
+        if (data.length == 3 ) {
+           retorno = '0'+ data.substr(0,1)+':'+data.substr(1,2);  
+        }
+        if (data.length >= 4 ) {
+           retorno =  data.substr(0,2)+':'+data.substr(2,2);  
+
+        }
+        return retorno;
+    }
+    textToMoeda( data:string):string{
         let sinal = 1; 
-        sinal = 1;    
         let retorno:string;
+        if (!data){
+            return '';
+        }
         if (data.substr(0,1) === '-') {
            sinal = -1;    
         }
@@ -22,7 +51,9 @@ export class PraticaCore {
            sinal = -1;    
         }
 		data  = data.replace(/[^0-9]+/g,"");
-        data  = parseInt(data).toString();
+        if (data.length > 0 ) {
+           data  = parseInt(data).toString();
+        }   
         if (parseInt(data) === 0){
              return '0';
         } else if ((data === "") && (sinal < 0)) {
@@ -34,7 +65,6 @@ export class PraticaCore {
         if (data.length == 2 ) {
            retorno = '0,' + data;
         }
-        console.log(data);
         if (data.length >= 3) {
            let partedecimal:string = data.substr(data.length-2,2);
            let parteinteira:string  = data.substr(0,data.length-2);
@@ -46,13 +76,16 @@ export class PraticaCore {
            retorno = parteinteira.substr(0,qtdend);
            // meio
            for (let i = 0;i<=(qtdpontos-1);i++) {
-                retorno += '.'
+                if (retorno.length > 0 ) { 
+                    retorno += '.'
+                }    
                 retorno += partemeio.substr(i*3,3);
            }
            // decimal
            retorno += "," + partedecimal;
         }
-        return retorno;
+        
+        return (sinal<0?'-':'') + retorno;
     }
     
  
