@@ -45,7 +45,7 @@ export class PraticaCore {
            // inicio
            retorno = parteinteira.substr(0,qtdend);
            // meio
-           for (let i = 0;i<=(qtdpontos-);i++) {
+           for (let i = 0;i<=(qtdpontos-1);i++) {
                 retorno += '.'
                 retorno += partemeio.substr(i*3,3);
            }
