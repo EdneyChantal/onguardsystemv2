@@ -14,6 +14,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppConfig,onGuardConfig,APP_CONFIG} from './app-config';
 import {ContractModule} from './contract/contract.module';
 import {ValorMoedaDirective} from './share/valormoeda.directive';
+import {ParameterModule} from './parameter/parameter.module'
 
 // Must export the config
 const firebaseConfig = {
@@ -43,6 +44,7 @@ const myFirebaseAuthConfig = {
     LoginModule,
     ContractModule,
     AppRoutingModule,
+    ParameterModule,
     AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig),
     NgbModule.forRoot()
   ],

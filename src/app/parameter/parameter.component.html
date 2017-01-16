@@ -1,0 +1,40 @@
+<div class="alert alert-danger" *ngIf="!pdao.isChosenCompany()">
+    Deve selecionar um Estabelecimento
+</div>    
+<div *ngIf="pdao.isChosenCompany()">
+  <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+               <h1>Parametros da Aplicação</h1>
+            </div>  
+        </div>
+  </div>
+
+ 
+  <div class="row">
+     <div class="col-lg-8 col-lg-offset-2"> 
+         
+       <div class="card card-block">
+           <form  (ngSubmit)="onSubmit()" #fparam="ngForm">
+              <div class="form-group">
+                 <label>Nome do Gerente Administrativo </label>
+                 <input class="form-control" [(ngModel)]="oparam.gerenteAdmin" name="gerenteAdmin" required  maxlength="100"/>
+              </div>
+              <div class="form-group">
+                 <label>Lotação Maxima Estacionamento </label>
+                 <input type="number" class="form-control" [(ngModel)]="oparam.totalvagas" name="totalvagas" min="1" step="1" required />
+              </div>
+              
+              <button type="submit" [disabled]="fparam.form.invalid" class="btn btn-primary">Gravar</button>
+              <button type="cancel" class="btn btn-danger" (click)="cancel();">Limpar</button>
+              
+              
+          </form>
+
+       </div>
+
+     </div>
+     
+   </div>
+
+</div> 

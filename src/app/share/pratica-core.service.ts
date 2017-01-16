@@ -4,13 +4,7 @@ import { Injectable} from '@angular/core';
 @Injectable()
 export class PraticaCore {
     constructor() {}
-
-  
-    
-
-
-    moedaToNumber(str:string )
-    {
+    maskToNumber(str:string ) :number {
         return parseInt( str.replace(/[\D]+/g,'') );
     }
     textToTime(data:string ):string {

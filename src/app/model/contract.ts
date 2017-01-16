@@ -1,17 +1,11 @@
 export class Contract{
-   private _description:string;
+   description:string;
    dtfimvigencia:Date;
    dtinivigencia:Date;
    emailContact:String;
-   nomecontact:string;
+   namecontact:string;
    qtdvagas:number;
    valor:number;
+   timemax:string;
    constructor() {}
-   get description():string {
-     return this._description;
-   }
-   set description(nv:string) {
-       this._description=nv;
-   }
-
 }

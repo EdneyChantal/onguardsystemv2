@@ -1,8 +1,8 @@
-import { Injectable,Inject } from '@angular/core';
-import { AngularFire,FirebaseAuthState,FirebaseObjectObservable,AngularFireAuth,FirebaseListObservable} from 'angularfire2';
-import { Promise} from 'firebase';
-import {User }       from './user'
-import {Company }       from './company'
+import {Injectable,Inject } from '@angular/core';
+import {AngularFire,FirebaseAuthState,FirebaseObjectObservable,AngularFireAuth,FirebaseListObservable} from 'angularfire2';
+import {Promise} from 'firebase';
+import {User}       from './user'
+import {Company}       from './company'
 import {Establishment} from './establishment'
 import {Observable} from 'rxjs/observable';
 import {Router} from '@angular/router';

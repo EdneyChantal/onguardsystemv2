@@ -1,5 +1,7 @@
 <div class="card card-block">
-           <form  (ngSubmit)="onSubmit()" #fcontract="ngForm">
+           <h2 *ngIf="chCt">Alteração do Contrato {{chCt.description}}</h2>  
+           <h2 *ngIf="!chCt">Inclusão de Contrato</h2>  
+            <form  (ngSubmit)="onSubmit()" #fcontract="ngForm">
               <div class="form-group">
                  <label>  Nome do Contrato </label>
                  <input class="form-control" [(ngModel)]="contract.description" name="description" required  #description="ngModel" id="description" maxlength="100"/>
@@ -27,7 +29,7 @@
               <div class="form-group">
                    <label>Data Inicio Vigencia</label> 
                    <div class="input-group"> 
-                     <input class="form-control" placeholder="dd/mm/yyyy"  name="dtinivigencia" [(ngModel)]="contract.dtinivigencia" ngbDatepicker #d1="ngbDatepicker">
+                     <input class="form-control" placeholder="dd/mm/yyyy"  name="dtinivigencia" [(ngModel)]="contract.dtinivigencia" ngbDatepicker #d1="ngbDatepicker" required>
                      <div class="input-group-addon" (click)="d1.toggle()" >
                          <img src="assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
                      </div>
@@ -37,7 +39,7 @@
              <div class="form-group">
                    <label>Data Final Vigencia</label>
                     <div class="input-group"> 
-                     <input class="form-control" placeholder="dd/mm/yyyy"  name="dtfimvigencia" [(ngModel)]="contract.dtfimvigencia" ngbDatepicker #d2="ngbDatepicker">
+                     <input class="form-control" placeholder="dd/mm/yyyy"  name="dtfimvigencia" [(ngModel)]="contract.dtfimvigencia" ngbDatepicker #d2="ngbDatepicker" required>
                      <div class="input-group-addon" (click)="d2.toggle()" >
                          <img src="assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
                      </div>
@@ -45,7 +47,7 @@
              </div>  
               
               <button type="submit" [disabled]="fcontract.form.invalid" class="btn btn-primary">Gravar</button>
-              <button type="cancel" class="btn btn-danger" (click)="fcontract.reset;cancel();">Cancelar</button>
+              <button type="cancel" class="btn btn-danger" (click)="cancel();">Limpar</button>
               
               
           </form>
