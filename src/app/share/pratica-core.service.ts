@@ -95,7 +95,8 @@ export class PraticaCore {
        let a:Object[]=[];
        this.oForEach(pobj,function(value,key){
          let b = value;
-         b.$key=key;  
+         b.$key=key;
+         b.id=key;  
          a.push(b);
        });
        return a;
