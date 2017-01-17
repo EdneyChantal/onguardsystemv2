@@ -15,6 +15,7 @@ import {AppConfig,onGuardConfig,APP_CONFIG} from './app-config';
 import {ContractModule} from './contract/contract.module';
 import {ValorMoedaDirective} from './share/valormoeda.directive';
 import {ParameterModule} from './parameter/parameter.module';
+import {TableModule } from './table/table.module';
 
 
 // Must export the config
@@ -46,6 +47,7 @@ const myFirebaseAuthConfig = {
     ContractModule,
     AppRoutingModule,
     ParameterModule,
+    TableModule ,
     AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig),
     NgbModule.forRoot()
   ],

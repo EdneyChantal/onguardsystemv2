@@ -23,7 +23,25 @@
  <div class="row">
     <div class="col-lg-12">
        <div class="card card-block">
-            <table class="table table-striped table-bordered table-hover">
+           <ngb-accordion [closeOthers]="true" activeIds="1"> 
+              <ngb-panel id="{{i+1}}" *ngFor="let ct of lct;let i = index;">      
+                  <template ngbPanelTitle> 
+                      <span>{{ct.description}}</span>
+                      <div class="text-right">
+                        <button type="button" class="btn btn-primary btn-sm" (click)="change(ct)">Alterar</button>
+                        <button type="button" class="btn btn-danger  btn-sm" (click)="del(ct.$key)">Excluir</button>                
+                      </div>
+                  </template>
+                  <template ngbPanelContent> 
+
+
+                  </template>
+
+              </ngb-panel>
+           </ngb-accordion>
+
+
+           <!-- <table class="table table-striped table-bordered table-hover">
              <thead class="thead-inverse">
                 <tr>  
                   <th><a href="javascript:;" (click)="sort(1)">Nome</a></th>
@@ -37,7 +55,7 @@
                       <button type="button" class="btn btn-danger  btn-sm" (click)="del(ct.$key)">Excluir</button>                </td>    
              </tr>
              </tbody>
-              </table> 
+              </table> -->
        </div>
     </div>
  </div>
