@@ -23,6 +23,7 @@
  <div class="row">
     <div class="col-lg-12">
        <div class="card card-block">
+           <h4>Contratos Cadastrados</h4>
            <ngb-accordion [closeOthers]="true" activeIds="1"> 
               <ngb-panel id="{{i+1}}" *ngFor="let ct of lct;let i = index;">      
                   <template ngbPanelTitle> 
@@ -33,7 +34,7 @@
                       </div>
                   </template>
                   <template ngbPanelContent> 
-
+                       <cp-table [contract]="ct.id"></cp-table>
 
                   </template>
 

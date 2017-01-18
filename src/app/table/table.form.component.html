@@ -1,0 +1,14 @@
+<div class="card card-block">
+  <form  (ngSubmit)="onSubmit()" class="navbar-form navbar-left" #ftable="ngForm">
+     <div class="form-group input-group"> 
+        <span class="input-group-addon">Nome</span>
+        <input class="form-control" [(ngModel)]="table.nameTable" name="nameTable" required maxlength="50">
+     </div>
+     <div class="form-group input-group"> 
+        <span class="input-group-addon">Legenda</span>
+        <input class="form-control" [(ngModel)]="table.labelColumn" name="labelColumn" required maxlength="30">
+     </div>
+     <button type="submit" [disabled]="ftable.form.invalid" class="btn btn-primary">Gravar</button>
+     <button type="cancel" class="btn btn-danger" (click)="cancel();">Limpar</button>
+  </form>
+</div>    

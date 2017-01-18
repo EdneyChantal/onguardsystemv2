@@ -5,17 +5,17 @@ import {Promise} from 'firebase';
 import {Observable} from 'rxjs/observable';
 import {AuthService} from '../share/auth.service';
 import {PraticaCore}     from '../share/pratica-core.service'
-import {Table} from '../model/table';
+import {TableLine} from '../model/tableline';
 
 @Injectable()
-export class TableDaoService extends DaoService  {
+export class LineTableDaoService extends DaoService  {
      olist :FirebaseObjectObservable<Object>;
      constructor(private authservice:AuthService,private af:AngularFire,private pcore:PraticaCore){
          super();
      }
-     load(keycontract:string, promise:Function )  {
+     load(keycontract:string,keytable:string, promise:Function )  {
        if (this.isChosenCompany()) {  
-        this.olist = this.af.database.object(this.authservice.getPathBaseSis()+'/Table/'+keycontract);
+        this.olist = this.af.database.object(this.authservice.getPathBaseSis()+'/LineTable/'+keycontract+'/'+keytable);
         this.olist.subscribe({next:oct=>{
            let ar:Object[]=this.pcore.toArray(oct);
            promise(ar);
@@ -31,21 +31,21 @@ export class TableDaoService extends DaoService  {
        this.olist.update(obj).then((a)=>(promise?promise(a):null)).catch((err)=>(reject?reject(err):null));
 
      }
-     update(key:string,pc:Table,promise?:Function,reject?:Function) {
+     update(key:string,pc:TableLine,promise?:Function,reject?:Function) {
        let obj:Object={};
        obj[key]={};
        obj[key]=pc;
        this.olist.update(obj).then((a)=>(promise?promise(a):null)).catch((err)=>(reject?reject(err):null));
      }
 
-     insert(keycontract:string,pc:Table,promise?:Function,reject?:Function) {
+     insert(keycontract:string,keytable:string,pc:TableLine,promise?:Function,reject?:Function) {
        let id:string = this.pcore.geraId();
        let obj:Object={};
        obj[id]={};
        pc.id=id;
+       pc.idContract = keycontract; 
+       pc.idTable= keytable;
        obj[id]=pc;
-       obj[keycontract]=keycontract;
-
        this.olist.update(obj).then((a)=>(promise?promise(a):null)).catch((err)=>(reject?reject(err):null));
      }
 }
