@@ -6,6 +6,7 @@ import {FormsModule}    from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TableFormComponent} from './table.form.component';
 import {LineTableDaoService} from '../dao/linetable.dao.service';
+import {LineTableComponent} from './linetable.component'
 
 @NgModule({
   imports: [
@@ -13,7 +14,7 @@ import {LineTableDaoService} from '../dao/linetable.dao.service';
     FormsModule ,
     NgbModule
   ],
-  declarations: [TableComponent, TableFormComponent],
+  declarations: [TableComponent, TableFormComponent,LineTableComponent],
   providers:[TableDaoService,LineTableDaoService],
   exports:[TableComponent]
 })

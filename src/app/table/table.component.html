@@ -1,16 +1,21 @@
 <div class="row">
-  <div class="col-lg-3">
+   <div class="col-lg-3">
       
        <h3>Tabelas</h3>       
          <cp-table-form (tablechange)="save($event)"></cp-table-form>
 
       <h5>Tabelas Cadastradas</h5>
        <div class="list-group">
-          <button type="button" *ngFor="let ct of atable">{{ct.nameTable}}</button>
+          <button type="button" (click)="selTable(ct)" *ngFor="let ct of atable">{{ct.nameTable}}</button>
        </div>
        
 
 
       
-  </div>         
+    </div>    
+    <div class="col-lg-9" *ngIf="selectTable">
+       <cp-line-table  [contract]="keycontract" [table]="selectTable" ></cp-line-table>
+    
+    
+    </div>     
  </div>

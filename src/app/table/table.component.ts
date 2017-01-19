@@ -10,7 +10,14 @@ import {Table} from '../model/table';
 export class TableComponent implements OnInit {
   @Input('contract') keycontract:string;
   atable:Table[];
+  selectTable:Table;
   constructor(private tdao:TableDaoService) { }
+
+
+  
+  selTable(pTable:Table) {
+    this.selectTable = pTable;
+  }
 
   ngOnInit() {
      

@@ -1,6 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import {LineTableDaoService} from '../dao/linetable.dao.service';
 import {TableLine} from '../model/tableline';
+import {Table} from '../model/table';
 
 @Component({
   selector: 'cp-line-table',
@@ -9,17 +10,17 @@ import {TableLine} from '../model/tableline';
 })
 export class LineTableComponent implements OnInit {
   @Input('contract') keycontract:string;
-  @Input('table') keytable:string;
+  @Input('table') ptable:Table;
   atable:TableLine[];
   constructor(private tdao:LineTableDaoService) { }
 
   ngOnInit() {
      
-     this.tdao.load(this.keycontract,this.keytable,(obj)=>this.atable=(obj as TableLine[]) );
+     this.tdao.load(this.keycontract,this.ptable.id,(obj)=>this.atable=(obj as TableLine[]) );
 
   }
   save(event) {
-     this.tdao.insert(this.keycontract,this.keytable,event as TableLine);
+     this.tdao.insert(this.keycontract,this.ptable.id,event as TableLine);
   }
 
 }
