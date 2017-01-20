@@ -6,7 +6,7 @@ import {Table} from '../model/table';
 @Component({
   selector: 'cp-line-table',
   templateUrl: './linetable.component.html',
-  styleUrls: []
+  styleUrls: ['./linetable.component.css']
 })
 export class LineTableComponent implements OnInit {
   @Input('contract') keycontract:string;

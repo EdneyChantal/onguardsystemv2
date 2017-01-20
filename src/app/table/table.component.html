@@ -2,9 +2,13 @@
    <div class="col-lg-3">
       
        <h3>Tabelas</h3>       
-         <cp-table-form (tablechange)="save($event)"></cp-table-form>
+       <a  (click)="toogleForm()" class="btn btn-primary my-3"> 
+         <i class="fa fa-plus"></i>
+       </a>
+         <div *ngIf="formTable">
+            <cp-table-form  (tablechange)="save($event)"></cp-table-form>
+         </div>
 
-      <h5>Tabelas Cadastradas</h5>
        <div class="list-group">
           <button type="button" (click)="selTable(ct)" *ngFor="let ct of atable">{{ct.nameTable}}</button>
        </div>

@@ -11,9 +11,13 @@ export class TableComponent implements OnInit {
   @Input('contract') keycontract:string;
   atable:Table[];
   selectTable:Table;
+  formTable:boolean=false;
   constructor(private tdao:TableDaoService) { }
 
+ toogleForm() {
+   this.formTable = !this.formTable; 
 
+ }
   
   selTable(pTable:Table) {
     this.selectTable = pTable;
