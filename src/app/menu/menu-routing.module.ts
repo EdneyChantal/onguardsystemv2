@@ -3,9 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {MenuComponent }    from './menu.component';
 import {HomeComponent}      from './home.component';
-import {AuthGuard}          from '../auth-guard.service';
-import {ContractRoutes} from '../contract/contract.routes'
+import {AuthGuard}       from '../auth-guard.service';
+import {ContractRoutes}  from '../contract/contract.routes'
 import {ParameterRoutes} from '../parameter/parameter.routes'
+import {PortariaRoutes}  from '../portaria/portaria.routes' ;
 
 const menuRoutes: Routes = [
   {
@@ -17,7 +18,8 @@ const menuRoutes: Routes = [
         component:HomeComponent,
         canActivateChild:[AuthGuard] },
         ...ContractRoutes,
-        ...ParameterRoutes
+        ...ParameterRoutes,
+        ...PortariaRoutes
        ],
     
     

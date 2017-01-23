@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {Observable}  from 'rxjs/Rx' 
 
 @Component({
-  templateUrl: './home.component.html'
+  selector: 'app-portaria',
+  templateUrl: './portaria.component.html',
+  styleUrls: ['./portaria.component.css']
 })
-export class HomeComponent implements OnInit {
+export class PortariaComponent implements OnInit {
   time:string;
   extime:Observable<number>;
   constructor() { }

@@ -7,6 +7,32 @@ export class PraticaCore {
     maskToNumber(str:string ) :number {
         return parseInt( str.replace(/[\D]+/g,'') );
     }
+    controlArrayPage(arrTotal:Array<Object>,page:number=1,lengthPage:number=10) {
+       let arrPage = new Array<Object>();
+       let indexini:number;
+       let indexfim:number;
+       let lenTotal = arrTotal.length; 
+
+       if (arrTotal.length==0) {
+           return arrPage;
+       }
+
+       if (arrTotal.length <= lengthPage) {
+          indexini = 0;
+          indexfim = arrTotal.length -1; 
+       } else  {
+          indexini = (((page-1) * lengthPage) + 1 > lenTotal? lenTotal -1 : ((page -1) * lengthPage)  );
+          indexfim = ((page  * lengthPage) > lenTotal? lenTotal -1  : (page * lengthPage) -1  ); 
+       }   
+
+
+
+       arrPage = arrTotal.filter((value,index)=>(index >=indexini && index <= indexfim));
+  
+       return arrPage;
+    }
+
+
     textToTime(data:string ):string {
         let retorno:string='';
         if (!data){

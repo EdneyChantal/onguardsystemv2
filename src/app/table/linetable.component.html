@@ -9,42 +9,35 @@
               <thead>
                 <tr class="table-info text-primary" >
                   <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
+                  <th>Descrição</th>
+                  <th>#</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Larry</td>
-                  <td>the Bird</td>
+                <tr *ngFor="let lin of liTableView">
+                  <td><a class="btn btn-danger" (click)="del(lin)"><i class="fa fa-minus-circle pull-right"></i></a></td>
+                  <td>{{lin.description}}</td>
+                  <td>{{lin.codext}}</td>
                 </tr>
               </tbody>
             </table>
           </div>
+          <ngb-pagination [collectionSize]="liTable.length" [(page)]="page" (pageChange)="pageTable()" [boundaryLinks]="true"></ngb-pagination>
+          
+
         </div>
         <div class="col-md-6 text-left px-4">
-          <h1 class=" pi-item">CONTACT</h1>
-          <form>
+          <h1 class=" pi-item">Detalhes</h1>
+          <form (ngSubmit)="onSubmit()" #fliTable="ngForm">
             <fieldset class="form-group">
-              <label for="exampleInputEmail1">Your name</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Your name">
+              <label for="exampleInputEmail1">Descrição da Linha</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Descrição" [(ngModel)]="lineTable.description"name="description"  required >
             </fieldset>
             <fieldset class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              <label for="exampleInputEmail1">Código Externo</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Código"  [(ngModel)]="lineTable.codext" name="codext">
             </fieldset>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" [disabled]="fliTable.form.invalid" (click)="onSubmit()" class="btn btn-primary">Submit</button>
           </form>
         </div>
       </div>

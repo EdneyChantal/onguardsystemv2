@@ -27,7 +27,7 @@
            <ngb-accordion [closeOthers]="true" activeIds="1"> 
               <ngb-panel id="{{i+1}}" *ngFor="let ct of lct;let i = index;">      
                   <template ngbPanelTitle> 
-                      <span>{{ct.description}}</span>
+                      <h4 class="text-primary">{{ct.description}}</h4>
                       <div class="text-right">
                         <button type="button" class="btn btn-primary btn-sm" (click)="change(ct)">Alterar</button>
                         <button type="button" class="btn btn-danger  btn-sm" (click)="del(ct.$key)">Excluir</button>                

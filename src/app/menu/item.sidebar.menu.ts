@@ -3,5 +3,6 @@ export class ItemSidebarMenu {
    }
 }
 export const itensMenu:ItemSidebarMenu[]=[new ItemSidebarMenu('fa-table','/menu/contract','Contratos'),
-new ItemSidebarMenu('fa-gear','/menu/param','Parametro')
+                                          new ItemSidebarMenu('fa-gear','/menu/param','Parametro'),
+                                          new ItemSidebarMenu('fa-blind','/menu/portaria','Portaria'),
 ];
