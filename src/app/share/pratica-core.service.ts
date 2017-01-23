@@ -107,7 +107,19 @@ export class PraticaCore {
         
         return (sinal<0?'-':'') + retorno;
     }
-    
+   textToPlaca(placa:string) {
+     
+     let txA:string=(placa.substr(0,3));
+     let txB:string=(placa.length)
+      
+			
+
+
+
+
+
+
+   }
  
 
    oForEach(pobj:Object,callback:Function){
