@@ -16,7 +16,8 @@ import {ContractModule} from './contract/contract.module';
 import {ValorMoedaDirective} from './share/valormoeda.directive';
 import {ParameterModule} from './parameter/parameter.module';
 import {TableModule } from './table/table.module';
-import {PortariaModule} from './portaria/portaria.module'
+import {PortariaModule} from './portaria/portaria.module';
+
 
 
 
@@ -38,7 +39,7 @@ const myFirebaseAuthConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent,ValorMoedaDirective
+    AppComponent,ValorMoedaDirective 
   ],
   imports: [
     BrowserModule,

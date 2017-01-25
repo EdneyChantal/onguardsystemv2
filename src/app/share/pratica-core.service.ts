@@ -108,20 +108,15 @@ export class PraticaCore {
         return (sinal<0?'-':'') + retorno;
     }
    textToPlaca(placa:string) {
-     
-     let txA:string=(placa.substr(0,3));
-     let txB:string=(placa.length)
-      
-			
-
-
-
-
-
-
+     let ret:string="";  
+     if (placa.length <= 3) {
+        ret = placa.replace(/[^A-Za-z]+/g,"");
+        ret = ret.toUpperCase();
+     } else {
+       ret = placa.substr(0,3).toUpperCase() + "-" + placa.substr(3).replace(/[^0-9]+/g,""); 
+     }
+     return ret;
    }
- 
-
    oForEach(pobj:Object,callback:Function){
       for (let i in pobj) {
          if (pobj.hasOwnProperty(i) && i.substr(0,1) !=='$') {
