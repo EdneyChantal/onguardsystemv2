@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { AuthService} from '../../share/auth.service';
+import { AuthService} from '../../auth.service';
 import {Router}   from '@angular/router';
+import {Inject } from '@angular/core';
+import {AppConfig} from '../../app-config' ;
 
 @Component({
 	
@@ -9,7 +11,7 @@ import {Router}   from '@angular/router';
 })
 
 export class TopNavComponent {
-	constructor(private authservice:AuthService,private router:Router) {
+	constructor(private authservice:AuthService,private router:Router,@Inject('APP_CONFIG') private config: AppConfig) {
 
 	}
 

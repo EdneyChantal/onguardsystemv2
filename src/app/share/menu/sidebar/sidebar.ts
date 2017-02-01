@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ItemSidebarMenu,itensMenu} from '../item.sidebar.menu';
+import {Inject } from '@angular/core';
+import {AppConfig} from '../../app-config' ;
 
 @Component({
 	selector: 'sidebar-cmp',
@@ -9,7 +10,12 @@ import { ItemSidebarMenu,itensMenu} from '../item.sidebar.menu';
 export class SidebarComponent {
 	isActive = false;
 	showMenu: string = '';
-	xitensMenu = itensMenu;
+	xitensMenu;
+    constructor(@Inject('APP_CONFIG') private config: AppConfig){
+         this.xitensMenu = config.itensMenu;
+
+	}
+
 	eventCalled() {
 		this.isActive = !this.isActive;
 	}

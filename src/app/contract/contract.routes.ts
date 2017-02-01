@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 import { ContractComponent } from './contract.component';
-import {AuthGuard} from '../auth-guard.service'
+import {AuthGuard} from '../share/auth-guard.service'
 
 export const ContractRoutes: Route[] = [
   	{

@@ -3,15 +3,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule,AuthProviders,AuthMethods } from 'angularfire2';
-import { AppRoutingModule }  from './app-routing.module';
+import { AppRoutingModule }  from './share/app-routing.module';
 import { AuthService } from './share/auth.service';
 
 import {PraticaCore}  from  './share/pratica-core.service'
 import {AppComponent } from './app.component';
-import {LoginModule} from './login/login.module';
-import {MenuModule} from './menu/menu.module';
+import {LoginModule} from './share/login/login.module';
+import {MenuModule} from './share/menu/menu.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {AppConfig,onGuardConfig,APP_CONFIG} from './app-config';
+import {onGuardConfig} from './myapp-config';
 import {ContractModule} from './contract/contract.module';
 import {ValorMoedaDirective} from './share/valormoeda.directive';
 import {ParameterModule} from './parameter/parameter.module';
@@ -54,7 +54,7 @@ const myFirebaseAuthConfig = {
     AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig),
     NgbModule.forRoot()
   ],
-  providers: [PraticaCore,{provide:APP_CONFIG,useValue:onGuardConfig},AuthService],
+  providers: [PraticaCore,{provide:'APP_CONFIG',useValue:onGuardConfig},AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

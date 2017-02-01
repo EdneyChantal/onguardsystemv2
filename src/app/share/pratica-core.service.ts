@@ -107,18 +107,15 @@ export class PraticaCore {
         
         return (sinal<0?'-':'') + retorno;
     }
+
+   
    textToPlaca(placa:string) {
-     
-     let txA:string=(placa.substr(0,3));
-     let txB:string=(placa.length)
-      
-			
-
-
-
-
-
-
+     if (placa.length <= 3 ) {
+        placa = placa.replace(/[^A-Z]+/g,"");
+     } else {
+        placa = placa.substr(0,3) + "-" + placa.substr(4).replace(/[^0-9]+/g,"");
+     } 
+     return placa;
    }
  
 

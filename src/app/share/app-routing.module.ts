@@ -3,11 +3,11 @@ import {RouterModule, Routes } from '@angular/router';
 
 
 const appRoutes: Routes = [
-    { path: 'login',
-      loadChildren:'app/login/login.module#LoginModule',
+    {path: 'login',
+     loadChildren:'app/share/login/login.module#LoginModule',
     },
-    { path: 'menu',
-      loadChildren:'app/menu/menu.module#MenuModule',
+    {path: 'menu',
+     loadChildren:'app/share/menu/menu.module#MenuModule',
      },
      {path:'',
       redirectTo:'/menu',

@@ -6,7 +6,7 @@ import {Company}       from './company'
 import {Establishment} from './establishment'
 import {Observable} from 'rxjs/observable';
 import {Router} from '@angular/router';
-import {AppConfig,APP_CONFIG} from '../app-config' 
+import {AppConfig} from './app-config' 
 import {PraticaCore}  from './pratica-core.service'
 
 @Injectable()
@@ -26,7 +26,7 @@ export class AuthService {
 
   
 
-  constructor(private af:AngularFire,private router:Router,  @Inject(APP_CONFIG) private config: AppConfig,private pcore: PraticaCore ) {
+  constructor(private af:AngularFire,private router:Router,  @Inject('APP_CONFIG') private config: AppConfig,private pcore: PraticaCore ) {
      let actionOk:Function  = function(puser:User,pthis:AuthService) {
            if (puser) {
                    pthis.user = puser;

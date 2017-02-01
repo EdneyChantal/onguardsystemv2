@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 import { PortariaComponent } from './portaria.component';
-import {AuthGuard} from '../auth-guard.service'
+import {AuthGuard} from '../share/auth-guard.service'
 
 export const PortariaRoutes: Route[] = [
   	{
