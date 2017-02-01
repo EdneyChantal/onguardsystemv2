@@ -8,4 +8,5 @@ export class RegisterInput {
    horaFim:string;
    idcontact:string;
    infoTables:RegisterInputTable[];
+   valor:number;
 }

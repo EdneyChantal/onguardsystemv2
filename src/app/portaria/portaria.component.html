@@ -10,12 +10,11 @@
               <h2 class="text-primary text-left">Placa</h2>
               <input type="text" class="form-control form-control-lg" placeholder="Placa">
             </div>
-            <div class="form-group text-info text-center">
+
+            <div *ngIf="fase.fase==2" class="form-group text-info text-center">
               <h2 class="text-primary text-left">Contrato</h2>
               <select class="form-control form-control-lg">
-                <option value="">SELECIONE UM ITEM</option>
-                <option value="2">SANTA CASA DE MISERICORDIA</option>
-                <option value="3">ESPACO EDUCAR</option>
+                <option *ngFor="let ct of contracts" value="{{ct.id}}">{{ct.description}}</option>
               </select>
             </div>
             <a href="#" class="btn btn-primary btn-block btn-lg"><i class="fa fa-sign-in fa-3x"></i> Entrada</a>
