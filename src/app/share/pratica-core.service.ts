@@ -107,17 +107,7 @@ export class PraticaCore {
         
         return (sinal<0?'-':'') + retorno;
     }
-<<<<<<< HEAD
 
-   
-   textToPlaca(placa:string) {
-     if (placa.length <= 3 ) {
-        placa = placa.replace(/[^A-Z]+/g,"");
-     } else {
-        placa = placa.substr(0,3) + "-" + placa.substr(4).replace(/[^0-9]+/g,"");
-     } 
-     return placa;
-=======
    textToPlaca(placa:string) {
      let ret:string="";  
      if (placa.length <= 3) {
@@ -127,7 +117,6 @@ export class PraticaCore {
        ret = placa.substr(0,3).toUpperCase() + "-" + placa.substr(3).replace(/[^0-9]+/g,""); 
      }
      return ret;
->>>>>>> 9caa424265492c6db296151021a2191ad72b5730
    }
    oForEach(pobj:Object,callback:Function){
       for (let i in pobj) {
